@@ -1,20 +1,15 @@
 import { useState } from 'react';
 import { Fetch } from '../fetch.jsx'
 import { useNavigate } from "react-router-dom";
-import Product from './product.jsx'
 
 export default function Shop(){
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [selected, setSelected] = useState(null)
     const navigate = useNavigate();
-
- 
 
     function handleClick(product){
         navigate(`/shop/product/${product.id}`);    
-        setSelected(product)
     }
 
     return (
@@ -27,7 +22,7 @@ export default function Shop(){
             />
             {loading && <div>Loading products...</div>}
             {error && (
-            <div>{`There is a problem fetching the data - ${error}`}</div>
+            <div>{`There is a problem fetching products - ${error}`}</div>
             )}
             <ul>
                 {data &&
@@ -39,7 +34,6 @@ export default function Shop(){
                     </li>
                 )}
             </ul>
-            {selected && <Product selected={selected} />}
 
 
         </>
