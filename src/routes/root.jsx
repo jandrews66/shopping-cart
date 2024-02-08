@@ -1,6 +1,9 @@
 import {Outlet, Link } from "react-router-dom"
+import { useState } from 'react';
+
 
 export default function Root() {
+
     return (
         <>
             <h1>My Shop</h1>
