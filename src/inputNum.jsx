@@ -1,14 +1,5 @@
 
-export const InputNum = ({setQuantity, setCart, quantity, cart, title}) => {
-
-    function addToCart(e){
-        e.preventDefault()
-        setCart([
-            ...cart,
-            [title, quantity],
-        ])
-        setQuantity(1)
-    }
+export const InputNum = ({setQuantity, quantity, addToCart}) => {
 
     return (
         <>

@@ -16,6 +16,16 @@ const Product = () => {
     const navigate = useNavigate();
     const [cart, setCart] = useOutletContext()
 
+    function addToCart(e){
+        e.preventDefault()
+        data.quantity = quantity;
+        setCart([
+            ...cart,
+            data,
+        ])
+        setQuantity(1)
+    }
+
     return (
         <>
          <Fetch
@@ -34,7 +44,7 @@ const Product = () => {
                 <p>${data.price}</p>
                 <p>{data.description}</p>
                 <img src={data.image} width={150}></img>
-                <InputNum setQuantity={setQuantity} setCart={setCart} cart={cart} quantity={quantity} title={data.title}/>
+                <InputNum setQuantity={setQuantity} quantity={quantity} addToCart={addToCart}/>
             </div>
             }
         </>
