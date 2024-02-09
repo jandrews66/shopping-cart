@@ -10,6 +10,7 @@ import ErrorPage from "./error-page";
 import Shop from "./routes/shop";
 import Contact from "./routes/contact";
 import Product from "./routes/product"
+import Cart from "./routes/cart"
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "shop/product/:productId",
         element: <Product />,
+      },
+      {
+        path: "shop/cart",
+        element: <Cart />,
       },
     ],
 

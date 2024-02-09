@@ -1,8 +1,14 @@
 import {Outlet, Link } from "react-router-dom"
 import { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 
 export default function Root() {
+    const [cart, setCart] = useState([]);
+    const navigate = useNavigate();
+
+    function handleClick(){
+        navigate(`/shop/cart/`)
+    }
 
     return (
         <>
@@ -19,9 +25,10 @@ export default function Root() {
                         <Link to={`contact`}>Contact</Link>
                     </li>
                 </ul>
+                <button onClick={handleClick}>Cart: {cart.length}</button>
             </nav>
             <div id="content">
-                <Outlet />
+                <Outlet context={[cart, setCart]}/>
             </div>
         </>
     )

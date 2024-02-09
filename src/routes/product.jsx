@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Fetch } from '../fetch.jsx'
 import { InputNum } from '../inputNum.jsx'
+import { useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 
 const Product = () => {
@@ -11,14 +13,11 @@ const Product = () => {
     //get id from URL
     let id = useParams();
     const [quantity, setQuantity] = useState(1)
-    const [cart, setCart] = useState([])
-
-
-
+    const navigate = useNavigate();
+    const [cart, setCart] = useOutletContext()
 
     return (
         <>
-        <p>Cart: {cart.length}</p>
          <Fetch
             setData={setData}
             setLoading={setLoading}

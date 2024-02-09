@@ -8,8 +8,8 @@ export default function Shop(){
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    function handleClick(product){
-        navigate(`/shop/product/${product.id}`);    
+    function handleClick(id){
+        navigate(`/shop/product/${id}`);    
     }
 
     return (
@@ -27,7 +27,7 @@ export default function Shop(){
             <ul>
                 {data &&
                     data.map( product => 
-                    <li key={product.id} onClick={ () => handleClick(product)}>
+                    <li key={product.id} onClick={ () => handleClick(product.id)}>
                         <p>{product.title}</p>
                         <p>${product.price}</p>
                         <img src={product.image} width={100}></img>
