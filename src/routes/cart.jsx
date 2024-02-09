@@ -5,11 +5,7 @@ import { useState } from 'react';
 
 const Cart = () => {
     const [cart, setCart] = useOutletContext()
-    const [quantity, setQuantity] = useState()
 
-    function addToCart(e){
-        e.preventDefault()
-    }
     return(
         <>
             <p>Cart</p>
@@ -21,12 +17,12 @@ const Cart = () => {
                         <p>{product.title}</p>
                         <p>${product.price}</p>
                         <img src={product.image} width={100}></img>
-                        <InputNum setQuantity={setQuantity} quantity={product.quantity} addToCart={addToCart}/>
+                        <InputNum product={product} amount={product.quantity} showAdd={false}/>
                         <p>Price: {product.quantity * product.price}</p>
                     </li>
                 )}
             </ul>
-
+            <p>Cart Total: {cart.reduce((a, v) => a = a + v.price * v.quantity, 0 )}</p>
         </>
     )
 }

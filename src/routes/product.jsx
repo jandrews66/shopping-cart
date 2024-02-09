@@ -12,19 +12,8 @@ const Product = () => {
     const [error, setError] = useState(null);
     //get id from URL
     let id = useParams();
-    const [quantity, setQuantity] = useState(1)
     const navigate = useNavigate();
-    const [cart, setCart] = useOutletContext()
 
-    function addToCart(e){
-        e.preventDefault()
-        data.quantity = quantity;
-        setCart([
-            ...cart,
-            data,
-        ])
-        setQuantity(1)
-    }
 
     return (
         <>
@@ -44,7 +33,7 @@ const Product = () => {
                 <p>${data.price}</p>
                 <p>{data.description}</p>
                 <img src={data.image} width={150}></img>
-                <InputNum setQuantity={setQuantity} quantity={quantity} addToCart={addToCart}/>
+                <InputNum product={data}/>
             </div>
             }
         </>
