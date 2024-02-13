@@ -12,7 +12,7 @@ export default function Root() {
 
     return (
         <>
-            <h1>My Shop</h1>
+            <h1>Big Joe's Discount Electronics</h1>
             <nav>
                 <ul>
                     <li>

@@ -3,6 +3,10 @@
   place-items: center;
 }
 
+li {
+  list-style: none;
+}
+
 .highlight {
   border-color: blue;
 }

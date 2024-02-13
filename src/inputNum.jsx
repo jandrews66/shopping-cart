@@ -10,12 +10,20 @@ export const InputNum = ({product, amount = 1, showAdd = true }) => {
 
     function addToCart(e){
         e.preventDefault()
-        product.quantity = quantity;
-        setCart([
-            ...cart,
-            product,
-        ])
         setQuantity(1)
+        const i = cart.findIndex(e => e.id == product.id)
+        //if product is already in cart, increase quantity of exisiting product object
+        if (i > -1){
+            cart[i].quantity += quantity;
+            setCart([...cart,])
+        } else {
+            product.quantity = quantity;
+            setCart([
+                ...cart,
+                product,
+            ])
+        }
+
     }
 
     function updateCart(e){

@@ -14,7 +14,6 @@ export default function Shop(){
 
     return (
         <>
-            <p>Shop</p>
             <Fetch
             setData={setData}
             setLoading={setLoading}
