@@ -30,7 +30,7 @@ const Product = () => {
             {data &&
             <div>
                 <h2>{data.title}</h2>
-                <p>${data.price}</p>
+                <p>${data.price.toFixed(2)}</p>
                 <p>{data.description}</p>
                 <img src={data.image} width={150}></img>
                 <InputNum product={data}/>

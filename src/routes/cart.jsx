@@ -6,23 +6,25 @@ import { useState } from 'react';
 const Cart = () => {
     const [cart, setCart] = useOutletContext()
 
+    function getTotal(){
+        let total = cart.reduce((a, v) => a = a + v.price * v.quantity, 0 )
+        return total.toFixed(2)
+    }
     return(
         <>
             <p>Cart</p>
-            {console.log(cart)}
             <ul>
                 {cart &&
                     cart.map(product => 
                     <li key={product.id}>
                         <p>{product.title}</p>
-                        <p>${product.price}</p>
+                        <p>${product.price.toFixed(2)}</p>
                         <img src={product.image} width={100}></img>
                         <InputNum product={product} amount={product.quantity} showAdd={false}/>
-                        <p>Price: {product.quantity * product.price}</p>
                     </li>
                 )}
             </ul>
-            <p>Cart Total: {cart.reduce((a, v) => a = a + v.price * v.quantity, 0 )}</p>
+            <p>Cart Total: ${getTotal()}</p>
         </>
     )
 }

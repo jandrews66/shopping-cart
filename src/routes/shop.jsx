@@ -29,7 +29,7 @@ export default function Shop(){
                     data.map( product => 
                     <li key={product.id} onClick={ () => handleClick(product.id)}>
                         <p>{product.title}</p>
-                        <p>${product.price}</p>
+                        <p>${product.price.toFixed(2)}</p>
                         <img src={product.image} width={100}></img>
                     </li>
                 )}
