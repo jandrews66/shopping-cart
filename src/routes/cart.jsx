@@ -1,6 +1,5 @@
 import { useOutletContext } from "react-router-dom";
 import { InputNum } from '../inputNum.jsx'
-import { useState } from 'react';
 
 
 const Cart = () => {

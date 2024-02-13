@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
+import { TiDelete } from "react-icons/ti";
+import styled, { css } from 'styled-components';
+import { IconBtn, Button } from './components/Buttons'
 
 //if InputNum is called from product, use the default props
 //true is Add to Cart, false is Update Cart and Remove Product
@@ -53,7 +56,12 @@ export const InputNum = ({product, amount = 1, showAdd = true }) => {
         setHighlight(true)
 
         }
-    
+
+      
+      const Container = styled.div`
+        text-align: center;
+      `
+      
 
 
     return (
@@ -65,14 +73,18 @@ export const InputNum = ({product, amount = 1, showAdd = true }) => {
                 ></input>
             </label>
             {showAdd &&
-                <button onClick={(e) => addToCart(e)}>Add to Cart</button>
+                <Button onClick={(e) => addToCart(e)}>Add to Cart</Button>
 
             }
             {!showAdd &&
             //Show the update button when component is called from Cart
             <>
-                <button className={highlight ? "highlight" : null}onClick={(e) => updateCart(e)}>Update Cart</button>
-                <button onClick={(e) => removeProduct(e)}>Remove Product</button>
+                {/* <button className={highlight ? "highlight" : null} onClick={(e) => updateCart(e)}>Update Cart</button> */}
+                <Button 
+                highlight={highlight}
+                onClick={(e) => updateCart(e)}>Update Cart
+                </Button>
+                <IconBtn type="button" onClick={(e) => removeProduct(e)}><TiDelete /></IconBtn>
             </>
             }
 
