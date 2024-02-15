@@ -1,10 +1,18 @@
 import { useOutletContext } from "react-router-dom";
+import { useState } from 'react';
 import { InputNum } from '../inputNum.jsx'
 import { IconBtn, Button } from '../components/Buttons'
 import { TiDelete } from "react-icons/ti";
 
+
 function Product( {product, removeProduct} ) {
+    const [quantity, setQuantity] = useState(product.quantity)
+
+    function handleChange(e){
+        setQuantity(e.target.value)
+    }
     return (
+        <>
         <tr key={product.id}>
             <td>
             <IconBtn type="button" onClick={() => removeProduct(product)}>
@@ -14,11 +22,12 @@ function Product( {product, removeProduct} ) {
             <td>{product.title}</td>
             <td>${product.price}</td>
             <td>
-                <InputNum product={product} amount={product.quantity} showAdd={false}/>
+                <InputNum handleChange={handleChange} quantity={quantity} />
             </td>
             <td>${product.price * product.quantity}</td>
-
         </tr>
+
+        </>
     )
 }
 
@@ -35,6 +44,18 @@ const Cart = () => {
         setCart(updatedCart);
     }
 
+    function updateCart(){
+        console.log("UPDATE")
+/*      let index = cart.indexOf(product)
+        cart[index].quantity = quantity
+        setCart([
+            ...cart,
+        ])
+        setHighlight(false)
+ */
+    } 
+
+
     return(
         <>
             <table>
@@ -48,12 +69,15 @@ const Cart = () => {
                         <th>Sub Total</th>
                         <th></th>
                     </tr>
-                    </thead>
-
-                    <tbody>
-                        { cart.map(product => <Product key={product.id} product={product} removeProduct={removeProduct} />) }
-                    </tbody>
+                </thead>
+                <tbody>
+                    { cart.map(product => <Product key={product.id} product={product} removeProduct={removeProduct} />) }
+                </tbody>
             </table>
+            <Button 
+                onClick={() => updateCart()}>
+                UPDATE CART
+            </Button>
             <p>Cart Total: ${getTotal()}</p>
         </>
     )

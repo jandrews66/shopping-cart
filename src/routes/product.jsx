@@ -4,6 +4,8 @@ import { Fetch } from '../fetch.jsx'
 import { InputNum } from '../inputNum.jsx'
 import { useNavigate } from "react-router-dom";
 import Loading from '../components/Loading.js'
+import { useOutletContext } from "react-router-dom";
+import { IconBtn, Button } from '../components/Buttons'
 
 
 const Product = () => {
@@ -14,6 +16,30 @@ const Product = () => {
     let id = useParams();
     const navigate = useNavigate();
 
+    const [quantity, setQuantity] = useState(1)
+    const [cart, setCart] = useOutletContext()
+
+
+    function addToCart(e){
+        e.preventDefault()
+        setQuantity(1)
+        const i = cart.findIndex(e => e.id == data.id)
+        //if product is already in cart, increase quantity of exisiting product object
+        if (i > -1){
+            cart[i].quantity += quantity;
+            setCart([...cart,])
+        } else {
+            data.quantity = quantity;
+            setCart([
+                ...cart,
+                data,
+            ])
+        }
+    }
+
+    function handleChange(e){
+        setQuantity(e.target.value)
+    }
 
     return (
         <>
@@ -37,7 +63,9 @@ const Product = () => {
                     <p>${data.price.toFixed(2)}</p>
                     <p>{data.description}</p>
                     <div className="cartInput">
-                        <InputNum product={data}/>
+                        <InputNum handleChange={handleChange} quantity={quantity}  />
+                        <Button onClick={(e) => addToCart(e)}>ADD TO CART</Button>
+
                     </div>
                 </div>
 
