@@ -3,6 +3,24 @@ import { InputNum } from '../inputNum.jsx'
 import { IconBtn, Button } from '../components/Buttons'
 import { TiDelete } from "react-icons/ti";
 
+function Product( {product, removeProduct} ) {
+    return (
+        <tr key={product.id}>
+            <td>
+            <IconBtn type="button" onClick={() => removeProduct(product)}>
+                <TiDelete />
+            </IconBtn>            </td>
+            <td><img src={product.image} width={100}></img></td>
+            <td>{product.title}</td>
+            <td>${product.price}</td>
+            <td>
+                <InputNum product={product} amount={product.quantity} showAdd={false}/>
+            </td>
+            <td>${product.price * product.quantity}</td>
+
+        </tr>
+    )
+}
 
 const Cart = () => {
     const [cart, setCart] = useOutletContext()
@@ -12,35 +30,30 @@ const Cart = () => {
         return total.toFixed(2)
     }
 
-    function removeProduct(e, product){
-        e.preventDefault()
-        let index = cart.indexOf(product)
-        cart.splice(index, 1)
-        setCart([
-            ...cart,
-        ])
+    function removeProduct(productToRemove) {
+        const updatedCart = cart.filter(product => product.id !== productToRemove.id);
+        setCart(updatedCart);
     }
 
     return(
         <>
-            <p>Cart</p>
-            <ul>
-                {cart &&
-                    cart.map(product => 
-                    <li key={product.id}>
-                        <div className="cartItem">
-                            <div className="imgContainer">
-                                <img src={product.image} width={100}></img>
-                                <IconBtn type="button" onClick={(e) => removeProduct(e, product)}><TiDelete /></IconBtn>
-                            </div>
-                            <p>{product.title}</p>
-                            <p>${product.price.toFixed(2)}</p>
-                        </div>
-                        <InputNum product={product} amount={product.quantity} showAdd={false}/>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                        <th></th>
+                    </tr>
+                    </thead>
 
-                    </li>
-                )}
-            </ul>
+                    <tbody>
+                        { cart.map(product => <Product key={product.id} product={product} removeProduct={removeProduct} />) }
+                    </tbody>
+            </table>
             <p>Cart Total: ${getTotal()}</p>
         </>
     )
