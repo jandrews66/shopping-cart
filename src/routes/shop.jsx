@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Fetch } from '../fetch.jsx'
 import { useNavigate } from "react-router-dom";
+import Loading from '../components/Loading.js'
 
 export default function Shop(){
     const [data, setData] = useState(null);
@@ -19,17 +20,21 @@ export default function Shop(){
             setLoading={setLoading}
             setError={setError}
             />
-            {loading && <div>Loading products...</div>}
+            {loading && <Loading/>}
             {error && (
             <div>{`There is a problem fetching products - ${error}`}</div>
             )}
-            <ul>
+            <ul className="cardContainer">
                 {data &&
                     data.map( product => 
-                    <li key={product.id} onClick={ () => handleClick(product.id)}>
+                    <li key={product.id} 
+                    className="card"
+                    onClick={ () => handleClick(product.id)}>
+                        <div className="imgContainer">
+                            <img src={product.image} width={120}></img>
+                        </div>
                         <p>{product.title}</p>
-                        <p>${product.price.toFixed(2)}</p>
-                        <img src={product.image} width={100}></img>
+                        <p className="productPrice">${product.price.toFixed(2)}</p>
                     </li>
                 )}
             </ul>

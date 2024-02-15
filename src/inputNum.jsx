@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useOutletContext } from "react-router-dom";
-import { TiDelete } from "react-icons/ti";
 import styled, { css } from 'styled-components';
 import { IconBtn, Button } from './components/Buttons'
+
 
 //if InputNum is called from product, use the default props
 //true is Add to Cart, false is Update Cart and Remove Product
@@ -40,28 +40,13 @@ export const InputNum = ({product, amount = 1, showAdd = true }) => {
 
     }
 
-    function removeProduct(e){
-        e.preventDefault()
-        let index = cart.indexOf(product)
-        cart.splice(index, 1)
-        setCart([
-            ...cart,
-        ])
-        setHighlight(false)
-    }
-
     function handleChange(e){
         setQuantity(e.target.value)
         //highlight update button when quantity is changed to prompt user to click
         setHighlight(true)
 
-        }
+    }
 
-      
-      const Container = styled.div`
-        text-align: center;
-      `
-      
 
 
     return (
@@ -73,7 +58,7 @@ export const InputNum = ({product, amount = 1, showAdd = true }) => {
                 ></input>
             </label>
             {showAdd &&
-                <Button onClick={(e) => addToCart(e)}>Add to Cart</Button>
+                <Button onClick={(e) => addToCart(e)}>ADD TO CART</Button>
 
             }
             {!showAdd &&
@@ -82,9 +67,9 @@ export const InputNum = ({product, amount = 1, showAdd = true }) => {
                 {/* <button className={highlight ? "highlight" : null} onClick={(e) => updateCart(e)}>Update Cart</button> */}
                 <Button 
                 highlight={highlight}
-                onClick={(e) => updateCart(e)}>Update Cart
+                onClick={(e) => updateCart(e)}>
+                UPDATE CART
                 </Button>
-                <IconBtn type="button" onClick={(e) => removeProduct(e)}><TiDelete /></IconBtn>
             </>
             }
 

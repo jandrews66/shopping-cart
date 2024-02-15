@@ -1,24 +1,23 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
-background: transparent;
-border-radius: 3px;
-border: 2px solid black;
-color: black;
-padding: 0.25em 1em;
+background-color: rgba(81, 111, 172, 0.569);
+border: 2px solid rgba(81, 111, 172, 0.569);
+color: white;
+padding: 0.5em 2em;
+margin: 0em 1em;
+cursor: pointer;
 
   ${(props) =>
     props.highlight &&
     css`
-      border: 3px solid #0000ffe7;
+      border: 2px solid darkblue;
       `}
 `;
 
 export const IconBtn = styled.button`
 background: transparent;
 border: none;
-margin: 0.5em 1em;
-padding: 0.25em 1em;
 font-size: 2em;
 
 ${(props) =>

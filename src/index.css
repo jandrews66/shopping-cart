@@ -1,12 +1,128 @@
-*{
+* {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  place-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(237, 241, 255);
+
+}
+#bg {
+
+}
+
+.backg{
+  background-image: url('src/assets/onur-binay-4Ykxp_t4i08-unsplash.jpg');
+  min-height: 100vh;
+}
+#header{
+  background-color: rgba(81, 111, 172, 0.569);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 15vh;
+  gap: 50px;
+
 }
 
 li {
   list-style: none;
 }
+h1 {
+  font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  margin-left: 20vw;
+  margin-top: 20vh;
+}
+h2 {
+
+}
+
+nav {
+
+}
+nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: white;
+
+}
+a:-webkit-any-link{
+  text-decoration: none;
+  color: white;
+
+}
+
+a:-webkit-any-link:hover{
+  text-decoration: underline;
+  color: white;
+
+}
+
+#cartIcon{
+  margin-left: auto;
+  margin-right: 20px;
+}
+
 
 .highlight {
-  border-color: blue;
+  border-color: #0000ffe7;
+}
+
+.cardContainer{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 150px;
+
+}
+
+.card{
+  margin: auto;
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* border: 2px solid black; */
+}
+
+.imgContainer{
+  background-color: white;
+  width: 250px;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+
+}
+
+.imgContainer img {
+  align-self: center;
+}
+
+.productPrice{
+  font-weight:500;
+}
+
+.product{
+  padding: 100px 200px;
+  display: flex;
+  gap: 50px;
+}
+
+.productInfo{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cartInput{
+}
+
+.cartItem{
+  
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Fetch } from '../fetch.jsx'
 import { InputNum } from '../inputNum.jsx'
 import { useNavigate } from "react-router-dom";
-import { useOutletContext } from "react-router-dom";
+import Loading from '../components/Loading.js'
 
 
 const Product = () => {
@@ -23,17 +23,24 @@ const Product = () => {
             setError={setError}
             id={id.productId}
             />
-            {loading && <div>Loading products...</div>}
+            {loading && <Loading/>}
             {error && (
             <div>{`There is a problem fetching the product - ${error}`}</div>
             )}
             {data &&
-            <div>
-                <h2>{data.title}</h2>
-                <p>${data.price.toFixed(2)}</p>
-                <p>{data.description}</p>
-                <img src={data.image} width={150}></img>
-                <InputNum product={data}/>
+            <div className="product">
+                <div className="imgContainer">
+                    <img src={data.image} width={200}></img>
+                </div>
+                <div className="productInfo">
+                    <h2>{data.title}</h2>
+                    <p>${data.price.toFixed(2)}</p>
+                    <p>{data.description}</p>
+                    <div className="cartInput">
+                        <InputNum product={data}/>
+                    </div>
+                </div>
+
             </div>
             }
         </>
