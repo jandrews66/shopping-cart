@@ -38,7 +38,8 @@ const Product = () => {
     }
 
     function handleChange(e){
-        setQuantity(e.target.value)
+        //e.target.value is a string so use parseInt to convert to an integer
+        setQuantity(parseInt(e.target.value))
     }
 
     return (

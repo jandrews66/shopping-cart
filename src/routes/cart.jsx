@@ -7,9 +7,18 @@ import { TiDelete } from "react-icons/ti";
 
 function Product( {product, removeProduct} ) {
     const [quantity, setQuantity] = useState(product.quantity)
+    const [cart, setCart] = useOutletContext()
 
     function handleChange(e){
-        setQuantity(e.target.value)
+        const newQuantity = parseInt(e.target.value);
+        setQuantity(newQuantity);
+    
+        const updatedCart = cart.map((p) =>
+          p.id === product.id ? { ...p, quantity: newQuantity } : p
+        );
+    
+        setCart(updatedCart);
+
     }
     return (
         <>
@@ -22,7 +31,7 @@ function Product( {product, removeProduct} ) {
             <td>{product.title}</td>
             <td>${product.price}</td>
             <td>
-                <InputNum handleChange={handleChange} quantity={quantity} />
+                <InputNum handleChange={handleChange} quantity={quantity} product={product} />
             </td>
             <td>${product.price * product.quantity}</td>
         </tr>
@@ -44,19 +53,8 @@ const Cart = () => {
         setCart(updatedCart);
     }
 
-    function updateCart(){
-        console.log("UPDATE")
-/*      let index = cart.indexOf(product)
-        cart[index].quantity = quantity
-        setCart([
-            ...cart,
-        ])
-        setHighlight(false)
- */
-    } 
 
-
-    return(
+    return (
         <>
             <table>
                 <thead>
@@ -74,10 +72,6 @@ const Cart = () => {
                     { cart.map(product => <Product key={product.id} product={product} removeProduct={removeProduct} />) }
                 </tbody>
             </table>
-            <Button 
-                onClick={() => updateCart()}>
-                UPDATE CART
-            </Button>
             <p>Cart Total: ${getTotal()}</p>
         </>
     )
