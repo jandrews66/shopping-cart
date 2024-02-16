@@ -1,8 +1,10 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
 import { useState } from 'react';
 import { InputNum } from '../inputNum.jsx'
 import { IconBtn, Button } from '../components/Buttons'
-import { TiDelete } from "react-icons/ti";
+
+import { CiCircleRemove } from "react-icons/ci";
+
 
 
 function Product( {product, removeProduct} ) {
@@ -25,7 +27,7 @@ function Product( {product, removeProduct} ) {
         <tr key={product.id}>
             <td>
             <IconBtn type="button" onClick={() => removeProduct(product)}>
-                <TiDelete />
+                <CiCircleRemove />
             </IconBtn>            </td>
             <td><img src={product.image} width={100}></img></td>
             <td>{product.title}</td>
@@ -52,11 +54,24 @@ const Cart = () => {
         const updatedCart = cart.filter(product => product.id !== productToRemove.id);
         setCart(updatedCart);
     }
-
+    const shippingCost = 8.99
+    const totalWithShipping = (parseFloat(getTotal()) + shippingCost).toFixed(2);
 
     return (
-        <>
-            <table>
+        <div id="cartContent">
+            {cart.length < 1 && 
+            <>
+                <p>Cart is empty...
+                    <Link style={{color: "darkblue"}} to={`/shop`}>
+                         go Shopping.
+                    </Link>
+                </p>
+            </>
+            }
+
+            {cart.length > 0 && 
+            <>
+                <table id="cartTable">
                 <thead>
                     <tr>
                         <th></th>
@@ -64,16 +79,46 @@ const Cart = () => {
                         <th>Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th>Sub Total</th>
-                        <th></th>
+                        <th>Subtotal</th>
                     </tr>
                 </thead>
                 <tbody>
                     { cart.map(product => <Product key={product.id} product={product} removeProduct={removeProduct} />) }
                 </tbody>
             </table>
-            <p>Cart Total: ${getTotal()}</p>
-        </>
+            <table id="totalTable">
+                <thead>
+                    <tr>
+                        <th>Cart Totals</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>${getTotal()}</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>${shippingCost}</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>${totalWithShipping}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        <Button>CHECK OUT</Button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+            </>         
+            }
+
+        </div>
     )
 }
 

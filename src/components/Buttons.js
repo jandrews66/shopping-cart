@@ -7,6 +7,7 @@ color: white;
 padding: 0.5em 2em;
 margin: 0em 1em;
 cursor: pointer;
+max-width: fit-content;
 
   ${(props) =>
     props.highlight &&
@@ -19,6 +20,8 @@ export const IconBtn = styled.button`
 background: transparent;
 border: none;
 font-size: 2em;
+cursor: pointer;
+
 
 ${(props) =>
   props.$cart &&
