@@ -30,7 +30,7 @@ export default function Root() {
         {/* If path is / show background image */}
         <div className={location == "/" ? "backg" : null}>
         <div id="header">
-            <img src="src/assets/logo2.png"></img>
+            <img src="./src/assets/logo2.png"></img>
             <nav>
                 <ul>
                     <li>
