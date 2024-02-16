@@ -13,7 +13,7 @@ body {
 }
 
 .backg{
-  background-image: url('src/assets/onur-binay-4Ykxp_t4i08-unsplash.jpg');
+  background-image: url('/assets/onur-binay-4Ykxp_t4i08-unsplash.jpg');
   min-height: 100vh;
 }
 #header{
