@@ -29,11 +29,16 @@ body {
 li {
   list-style: none;
 }
+
+#homeMessage{
+  margin-left: 20vw;
+  margin-top: 20vh;
+}
 h1 {
   font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: white;
-  margin-left: 20vw;
-  margin-top: 20vh;
+  padding-bottom: 1em;
+
 }
 
 nav ul {
@@ -80,6 +85,7 @@ a:-webkit-any-link:hover{
   display: flex;
   flex-direction: column;
   gap: 10px;
+  cursor: pointer;
   /* border: 2px solid black; */
 }
 
@@ -90,7 +96,6 @@ a:-webkit-any-link:hover{
   display: flex;
   justify-content: center;
   align-self: center;
-
 }
 
 .imgContainer img {
@@ -113,6 +118,9 @@ a:-webkit-any-link:hover{
   gap: 20px;
 }
 
+.cardInput > {
+  padding-bottom: 1em;
+}
 
 table {
   border-collapse: collapse;
@@ -144,4 +152,13 @@ th {
 
 #totalTable{
   margin-left: auto;
+}
+
+#contactContent{
+  text-align: center;
+  margin: 50px;
+}
+
+#contactContent > * {
+  padding: 1em;
 }

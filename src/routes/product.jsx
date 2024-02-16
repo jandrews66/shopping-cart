@@ -63,11 +63,9 @@ const Product = () => {
                     <h2>{data.title}</h2>
                     <p>${data.price.toFixed(2)}</p>
                     <p>{data.description}</p>
-                    <div className="cartInput">
-                        <InputNum handleChange={handleChange} quantity={quantity}  />
-                        <Button onClick={(e) => addToCart(e)}>ADD TO CART</Button>
+                    <InputNum handleChange={handleChange} quantity={quantity}  />
+                    <Button onClick={(e) => addToCart(e)}>ADD TO CART</Button>
 
-                    </div>
                 </div>
 
             </div>
