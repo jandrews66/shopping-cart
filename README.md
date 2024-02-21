@@ -1,8 +1,6 @@
-# React + Vite
+Create a mock shopping cart.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Use react-router to build a SPA with client-side routing.
+Fetch product data using the FakeStore API
+Consider using CSS in JS for styling, in particular look into the styled-components library
+Test the app using the React Testing Library

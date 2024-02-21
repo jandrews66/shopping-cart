@@ -2,7 +2,6 @@ import { useOutletContext, Link } from "react-router-dom";
 import { useState } from 'react';
 import { InputNum } from '../inputNum.jsx'
 import { IconBtn, Button } from '../components/Buttons'
-
 import { CiCircleRemove } from "react-icons/ci";
 
 

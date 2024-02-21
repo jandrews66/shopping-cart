@@ -44,3 +44,13 @@ ${(props) =>
   border: none;
   `}
 `;
+
+export const CartCount = styled.span`
+font-size: 0.4em; /* Adjust the font size as needed */
+color: white;
+background-color: #0000ffe7;
+border: 3px solid #0000ffe7;
+padding: 0 0.3em;
+margin-left: -0.6em;
+border-radius: 20px;
+`;

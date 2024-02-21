@@ -2,19 +2,7 @@ import {Outlet, Link } from "react-router-dom"
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { LuShoppingBasket } from "react-icons/lu";
-import { IconBtn } from '../components/Buttons'
-import styled, { css } from 'styled-components';
-
-
-const CartCount = styled.span`
-  font-size: 0.4em; /* Adjust the font size as needed */
-  color: white;
-  background-color: #0000ffe7;
-  border: 3px solid #0000ffe7;
-  padding: 0 0.3em;
-  margin-left: -0.6em;
-  border-radius: 20px;
-  `;
+import { IconBtn, CartCount } from '../components/Buttons'
 
 export default function Root() {
     const [cart, setCart] = useState([]);
